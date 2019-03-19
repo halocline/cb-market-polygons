@@ -1,20 +1,24 @@
-# cb-market-polygons Generates Market Polygons for Maps #
+# Generates Map Polygons from Zipcode & GeoJSON #
 
-This application generates map polygons for a market based on the zipcodes
+This application generates map polygons for a service area or market based on the Zipcodes
 composing the market.
 
-The app has a minimal UI to allow an end user to:
-
-1. Generate an up to date market polygon based on the current market definition.
-2. Render the generated market polygon as a layer in a Google map.
-
-### Why Care? ###
+## Why Care? ##
 
 Use Case: Service area businesses typically define operating regions, pricing,
 availability, and more based off of zipcodes which they service. The ability to
 display service area boundaries in a map is useful for:
 
-* Visual interface to see if they fall within a service area
+* Visual interface for Users to see if they fall within a service area
+* Visual interface for Customer Support to service customers
+* Geospatial analysis
+
+## Scope ##
+
+The app has a minimal UI to allow an end user to:
+
+1. Generate an up to date market polygon based on the current market definition.
+2. Render the generated market polygon as a layer in a Google map.
 
 ### Details ###
 
@@ -23,12 +27,14 @@ display service area boundaries in a map is useful for:
   * GeoJSON polygon definitions live in separate database
 1. Creating market polygons:  
   * Get zipcodes for market of interest  
-  * Query database for each polygon matching zipcodes  
-  * Melts independent zipcode polygons into a single polygon representing the aggregate market  
+  * Query database for each polygon Zipcode matching market Zipcodes  
+  * Melts independent Zipcode polygons into a single polygon representing the aggregate market  
 1. Display market polygons:  
-  * djafladf
+  * Utilize Google Maps API to initialize map instance on DOM
+  * Add polygon, center point, and zoom level to map data
+  * Render map
 
-## Getting Started ##
+# Getting Started #
 
 ### Install Dependencies ###
 
