@@ -1,4 +1,4 @@
-# Generates Map Polygons from Zipcode & GeoJSON #
+# Generates Map Polygons from Zipcodes & GeoJSON #
 
 This application generates map polygons for a service area or market based on the Zipcodes
 composing the market.
