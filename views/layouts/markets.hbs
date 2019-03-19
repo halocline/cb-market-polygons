@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Create & View Market Polygons</h1>
+		<p></p>
+	</div> <!-- .col -->
+</div> <!-- .row -->
+<div class="row">
+	<div class="col-md-12">
+		<h2>Markets</h2>
+	</div> <!-- .col -->
+</div> <!-- .row -->
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-striped table-hover">
+		  <thead>
+		  	<th>Market</th>
+				<th>Warehouses</th>
+				<th>Zips</th>
+				<th>Actions</th>
+				<th></th>
+		  </thead>
+		  <tbody>
+		  	{{#markets}}
+		  		<tr>
+		  			<td><a href="/build-map/{{_id}}/{{name}}">{{name}}</a></td>
+		  			<td>
+		  				{{#warehouseLocations}}
+		  					<div class="row">
+		  						<div class="col-sm-12"><b>{{agentName}}</b></div>
+		  					</div>
+		  					<div class="row">
+		  						<div class="col-sm-12">{{address}}</div>
+		  					</div>
+		  					<div class="row">
+		  						<div class="col-sm-12">
+		  							{{#coordinate}}
+		  								<div>(lat: {{lat}}, lng: {{lng}})</div>
+		  							{{/coordinate}}
+		  						</div>
+		  					</div>
+		  					<br>
+		  				{{/warehouseLocations}}
+		  			</td>
+		  			<td>
+		  				<div style="overflow: auto; height: 70px; width: 200px; word-wrap: break-word;">{{serviceablePostalCodes}}</div>
+		  			</td>
+						<td><a href="/zip-polygons/{{_id}}">Update Polygon</a></td>
+		  			<td><a href="/build-map/{{_id}}/{{name}}">View Map</a></td>
+		  		</tr>
+		  	{{/markets}}
+		  </tbody>
+		</table>
+	</div> <!-- .col -->
+</div> <!-- .row -->

@@ -1,0 +1,21 @@
+runtime: nodejs10 # For Node.js 8, use runtime: nodejs8
+
+instance_class: F2
+
+#handlers:
+#- url: /stylesheets
+#  static_dir: stylesheets
+
+#- url: /.*
+#  secure: always
+#  redirect_http_response_code: 301
+#  script: auto
+
+
+#handlers:
+#- url: /
+#  static_files: build/index.html
+#  upload: build/index.html
+
+#- url: /
+#  static_dir: build

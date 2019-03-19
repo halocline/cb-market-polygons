@@ -1,0 +1,64 @@
+<div class="container">
+	<div class="row">
+		<a href="/markets">Back to Markets</a>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>{{market.name}} <small>Service Area</small></h2>
+		</div> <!-- .col -->
+	</div> <!-- .row -->
+	<div class="row">
+		<div class="col-md-12 map-container">
+			<div id="map"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	function processPoints(geometry, callback, thisArg) {
+	  if (geometry instanceof google.maps.LatLng) {
+	    callback.call(thisArg, geometry);
+	  } else if (geometry instanceof google.maps.Data.Point) {
+	    callback.call(thisArg, geometry.get());
+	  } else {
+	    geometry.getArray().forEach(function(g) {
+	      processPoints(g, callback, thisArg);
+	    });
+	  }
+	}
+
+	// Initial Google map instance
+	function initMap() {
+		console.log('Initializing Google Map...');
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    //zoom: {{zoom}},
+	    //center: {lat: {{center.lat}}, lng: {{center.lng}} },
+	    mapTypeId: google.maps.MapTypeId.TERRAIN,
+	  });
+		var bounds = new google.maps.LatLngBounds();
+
+		map.data.setStyle({
+			strokeColor: '#337ab7',
+	    strokeOpacity: 0.8,
+	    strokeWeight: 2,
+	    fillColor: '#337ab7',
+	    fillOpacity: 0.35
+		});
+
+		map.data.addListener('addfeature', function(e) {
+  		processPoints(e.feature.getGeometry(), bounds.extend, bounds);
+  		map.fitBounds(bounds);
+		});
+
+		// Adding GeoJSON data to map data
+	  //map.data.loadGeoJson({{geoJSON}})  //loadGeoJson runs asnchronously, listen to the addfeature-event
+	  map.data.addGeoJson({{{geoJSON}}})
+
+
+	}
+</script>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9t4FIEDnDOLY7XXSA3wUO1g8yRQraakU&callback=initMap"
+>
+</script>

@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2>Markets</h2>
+	</div> <!-- .col -->
+</div> <!-- .row -->
+
+<!--
+<div class="row">
+	<div class="col-md-12">{{zoom}}</div>
+	<div class="col-md-12">{{center.lat}},{{center.lng}}</div>
+	<div class="col-md-12">
+		{{#boundary}}
+			<div>{{lat}},{{lng}}</div>
+		{{/boundary}}
+	</div>
+	<div>{{boundary}}</div>
+</div>
+-->
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 offset-3 map-container">
+			<div id="map"></div>
+		</div>
+	</div>
+</div> <!-- .container -->
+<script type="text/javascript">
+	// This example creates a simple polygon representing the Bermuda Triangle. Note
+	// that the code specifies only three LatLng coordinates for the polygon. The
+	// API automatically draws a stroke connecting the last LatLng back to the first
+	// LatLng.
+	function initMap() {
+		console.log('Initializing Google Map...');
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: {{zoom}},
+	    center: {lat: {{center.lat}}, lng: {{center.lng}} },
+	    mapTypeId: google.maps.MapTypeId.TERRAIN
+	  });
+
+	  // Define the LatLng coordinates for the polygon's path. Note that there's
+	  // no need to specify the final coordinates to complete the polygon, because
+	  // The Google Maps JavaScript API will automatically draw the closing side.
+
+	  var polyCoords = [];
+	  var coords = {}
+	  {{#boundary}}
+	  	coords = {
+	  		lat: {{lat}},
+	  		lng: {{lng}}
+	  	}
+	  	polyCoords.push(coords);
+	  {{/boundary}}
+
+
+	  var marketMap = new google.maps.Polygon({
+	    paths: polyCoords,
+	    strokeColor: '#FF0000',
+	    strokeOpacity: 0.8,
+	    strokeWeight: 3,
+	    fillColor: '#FF0000',
+	    fillOpacity: 0.35
+	  });
+	  marketMap.setMap(map);
+	}
+</script>
+<!-- Replace the value of the key parameter with your own API key. -->
+<!-- src="https://maps.googleapis.com/maps/api/js?client=gme-closetbox&callback=initMap" -->
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9t4FIEDnDOLY7XXSA3wUO1g8yRQraakU&callback=initMap"
+>
+</script>

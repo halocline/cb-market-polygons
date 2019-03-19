@@ -1,0 +1,98 @@
+
+<div class="jumbotron home-hero">
+	<div class="container-fluid">
+		<h1>Create Custom Map Polygons</h1>
+		<p>Easily generate maps for your service area business.</p>
+		<p><a class="btn btn-primary btn-lg" href="/markets" role="button">Get Started</a></p>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Project Background</h2>
+			<p>Originally this application was used as an internal tool to generate
+			maps for each market in which the organization operated. It also served as
+			proof of concept for features which were eventually implemented in a
+			comprehensive API.</p>
+			<h3>The Organization's Needs</h3>
+			<ul class="list-group">
+				<li class="list-group-item">Have accurate service area maps for each of its 50+ markets.</li>
+				<li class="list-group-item">Keep the maps in sync with operational back-office system as market
+					definitions were added, removed, or updated.</li>
+				<li class="list-group-item">Maps served as reference features for:
+					<ul>
+						<li>Clients</li>
+						<li>Customer Service Representatives</li>
+						<li>Search Engine Optimization</li>
+					</ul>
+				</li>
+			</ul>
+			<h3>Technical Scope</h3>
+			<ul class="list-group">
+				<li class="list-group-item">1) Create a database of ZIP Code polygons.</li>
+				<li class="list-group-item">2) Retrieve current market definitions, each market defined by
+				a list of serviceable ZIP Codes.</li>
+				<li class="list-group-item">3) Retrieve polygon for each ZIP Code in market.</li>
+				<li class="list-group-item">4) Merge individual ZIP Code polygons into a single, aggregated polygon for
+				the market.</li>
+				<li class="list-group-item">5) Save polygon in file store to be referenced by Drupal-based marketing
+				website.</li>
+				<li class="list-group-item">6) Display resulting market polygon on a Google map.</li>
+			</ul>
+			<h2>Approach</h2>
+			<span class="label label-default">Node</span>
+			<span class="label label-default">Express</span>
+			<span class="label label-default">GeoJSON</span>
+			<span class="label label-default">Turf.js</span>
+			<span class="label label-default">MongoDB</span>
+			<span class="label label-default">Mongoose</span>
+			<span class="label label-default">JSONStream</span>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 map-container">
+			<div id="map"></div>
+		</div>
+	</div>
+</div> <!-- .container -->
+<script type="text/javascript">
+	// This example creates a simple polygon representing the Bermuda Triangle. Note
+	// that the code specifies only three LatLng coordinates for the polygon. The
+	// API automatically draws a stroke connecting the last LatLng back to the first
+	// LatLng.
+	function initMap() {
+		console.log('Initializing Google Map...')
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: 4,
+	    center: {lat: 24.886, lng: -70.268},
+	    mapTypeId: google.maps.MapTypeId.TERRAIN
+	  });
+
+	  // Define the LatLng coordinates for the polygon's path. Note that there's
+	  // no need to specify the final coordinates to complete the polygon, because
+	  // The Google Maps JavaScript API will automatically draw the closing side.
+	  var triangleCoords = [
+	    {lat: 25.774, lng: -80.190},
+	    {lat: 18.466, lng: -66.118},
+	    {lat: 32.321, lng: -64.757}
+	  ];
+
+	  var bermudaTriangle = new google.maps.Polygon({
+	    paths: triangleCoords,
+	    strokeColor: '#FF0000',
+	    strokeOpacity: 0.8,
+	    strokeWeight: 3,
+	    fillColor: '#FF0000',
+	    fillOpacity: 0.35
+	  });
+	  bermudaTriangle.setMap(map);
+	}
+</script>
+<!-- Replace the value of the key parameter with your own API key. -->
+<!-- src="https://maps.googleapis.com/maps/api/js?client=gme-closetbox&callback=initMap" -->
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9t4FIEDnDOLY7XXSA3wUO1g8yRQraakU&callback=initMap"
+>
+</script>
