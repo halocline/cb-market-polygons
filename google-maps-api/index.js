@@ -25,7 +25,7 @@ module.exports = {
 							geocode_api +
 							'address=' +
 							geocodeParams.address +
-							'&key=AIzaSyA_roqtdAjWkZKqQGh0340kUuKSDjnQVQk'
+							'&key=' + process.env.GOOGLE_API_KEY
 
 		console.log(url);
 		request(url, function (error, response, body) {

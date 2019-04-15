@@ -4,7 +4,10 @@ data/geos/polygons_markets
 data/geos/polygons_zips
 scripts/data/*
 node_modules
+
+
 ######
+.env
 
 # Compiled Source #
 ###################

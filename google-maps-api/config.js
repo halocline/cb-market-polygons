@@ -4,12 +4,12 @@
 //
 
 var enterpriseConfig = {
-	google_client_id: 'gme-closetbox',
-	google_private_crypto_key: '8lYXvTuf-J03eeiuxVGvenIwXCw='
+	google_client_id: process.env.GOOGLE_CLIENT_ID,
+	google_private_crypto_key: process.env.GOOGLE_PRIVATE_CRYPTO_KEY
 }
 
 var developmentConfig = {
-	google_api_key: 'AIzaSyC9t4FIEDnDOLY7XXSA3wUO1g8yRQraakU'
+	google_api_key: process.env.GOOGLE_API_KEY
 }
 
 //exports.enterpriseConfig = enterpriseConfig
