@@ -11,6 +11,7 @@ const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
 const routes = require('./routes/index.js')
+require('dotenv').config()
 
 /*
  * Configuring express
