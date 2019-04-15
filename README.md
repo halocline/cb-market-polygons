@@ -1,6 +1,6 @@
 # Generates Map Polygons from Zipcodes & GeoJSON #
 
-This application generates map polygons for a service area or market based on the Zipcodes
+This application generates custom map polygons for a service area or market based on the Zipcodes
 composing the market.
 
 ![polygon](https://github.com/halocline/cb-market-polygons/blob/master/public/img/map-polygon0.png)
